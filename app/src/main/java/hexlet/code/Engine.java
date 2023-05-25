@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
 
 import java.util.Scanner;
 
@@ -24,6 +25,7 @@ public class Engine {
             switch (gameNumber) {
                 case 2 -> handleRound(Even.generateQuestion(), Even.generateAnswer());
                 case 3 -> handleRound(Calc.generateQuestion(), Calc.generateAnswer());
+                case 4 -> handleRound(GCD.generateQuestion(), GCD.generateAnswer());
             }
         }
         sayGoodbye();
@@ -45,7 +47,7 @@ public class Engine {
     public static int chooseGame() {
         int choice = scanner.nextInt();
         scanner.nextLine();
-        System.out.println("Your choice: " + choice);
+        System.out.println("Your choice: " + choice + "\n");
         return choice;
     }
 
@@ -57,6 +59,7 @@ public class Engine {
         switch (gameNumber) {
             case 2 -> System.out.println(Even.MESSAGE);
             case 3 -> System.out.println(Calc.MESSAGE);
+            case 4 -> System.out.println(GCD.MESSAGE);
         }
     }
 }
