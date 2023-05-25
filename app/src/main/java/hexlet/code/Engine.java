@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class Engine {
                 case 2 -> handleRound(Even.generateQuestion(), Even.generateAnswer());
                 case 3 -> handleRound(Calc.generateQuestion(), Calc.generateAnswer());
                 case 4 -> handleRound(GCD.generateQuestion(), GCD.generateAnswer());
+                case 5 -> handleRound(Progression.generateQuestion(), Progression.generateAnswer());
             }
         }
         sayGoodbye();
@@ -60,6 +62,7 @@ public class Engine {
             case 2 -> System.out.println(Even.MESSAGE);
             case 3 -> System.out.println(Calc.MESSAGE);
             case 4 -> System.out.println(GCD.MESSAGE);
+            case 5 -> System.out.println(Progression.MESSAGE);
         }
     }
 }

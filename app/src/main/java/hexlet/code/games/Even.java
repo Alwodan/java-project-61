@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Even {
     public static final String MESSAGE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    public static String currentQuestion;
+    private static String currentQuestion;
     public static String generateQuestion() {
         Random random = new Random();
         currentQuestion = String.valueOf(random.nextInt(1000));

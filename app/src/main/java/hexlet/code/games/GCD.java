@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class GCD {
     private static String currentAnswer;
-    public static String currentQuestion;
     public static final String MESSAGE = "Find the greatest common divisor of given numbers.";
     private static final int NUMBER_MAX = 100;
 

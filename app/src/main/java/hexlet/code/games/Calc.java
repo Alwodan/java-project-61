@@ -5,7 +5,7 @@ import java.util.Random;
 public class Calc {
     public static final String MESSAGE = "What is the result of the expression?";
     private static final int NUMBER_MAX = 100;
-    public static String currentQuestion;
+    private static String currentQuestion;
     public static String generateQuestion() {
         Random random = new Random();
         String operand;
