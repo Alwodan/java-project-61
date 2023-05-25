@@ -13,6 +13,10 @@ public class Prime {
     }
 
     public static String generateAnswer() {
+        //0 is non-prime
+        if (currentQuestion == 0) {
+            return "yes";
+        }
         // +1 so number 4 can pass
         for (int i = 2; i < (currentQuestion / 2) + 1; i++) {
             if (currentQuestion % i == 0) {
