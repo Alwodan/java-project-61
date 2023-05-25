@@ -13,7 +13,7 @@ public class Engine {
     public static void greeting() {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
-        userName = scanner.next();
+        userName = scanner.nextLine();
         System.out.println("Hello, " + userName + "!");
     }
 
@@ -31,7 +31,7 @@ public class Engine {
 
     public static void handleRound(String question, String correctAnswer) {
         System.out.println("Question: " + question);
-        String userAnswer  = scanner.next();
+        String userAnswer  = scanner.nextLine();
         System.out.println("Your answer: " + userAnswer);
         if (userAnswer.equals(correctAnswer)) {
             System.out.println("Correct!");
@@ -44,6 +44,7 @@ public class Engine {
 
     public static int chooseGame() {
         int choice = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Your choice: " + choice);
         return choice;
     }
