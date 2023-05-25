@@ -4,10 +4,11 @@ import java.util.Random;
 
 public class Even {
     public static final String MESSAGE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static final int MAX_NUMBER = 1000;
     private static String currentQuestion;
     public static String generateQuestion() {
         Random random = new Random();
-        currentQuestion = String.valueOf(random.nextInt(1000));
+        currentQuestion = String.valueOf(random.nextInt(MAX_NUMBER));
         return currentQuestion;
     }
 

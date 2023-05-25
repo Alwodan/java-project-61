@@ -5,13 +5,14 @@ import java.util.Random;
 public class Calc {
     public static final String MESSAGE = "What is the result of the expression?";
     private static final int NUMBER_MAX = 100;
+    private static final int NUMBER_OF_OPERATIONS = 3;
     private static String currentQuestion;
     public static String generateQuestion() {
         Random random = new Random();
         String operand;
         int firstNumber = random.nextInt(NUMBER_MAX);
         int secondNumber = random.nextInt(NUMBER_MAX);
-        int operation = random.nextInt(3);
+        int operation = random.nextInt(NUMBER_OF_OPERATIONS);
         operand = switch (operation) {
             case 0 -> "+";
             case 1 -> "-";
