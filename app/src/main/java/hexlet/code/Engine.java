@@ -16,12 +16,12 @@ public class Engine {
     private static final int PRIME_GAME = 6;
     private static final int NUMBER_OF_TURNS = 3;
     private static String userName;
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void greeting() {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
-        userName = scanner.nextLine();
+        userName = SCANNER.nextLine();
         System.out.println("Hello, " + userName + "!");
     }
 
@@ -43,7 +43,7 @@ public class Engine {
 
     public static void handleRound(String question, String correctAnswer) {
         System.out.println("Question: " + question);
-        String userAnswer  = scanner.nextLine();
+        String userAnswer  = SCANNER.nextLine();
         System.out.println("Your answer: " + userAnswer);
         if (userAnswer.equals(correctAnswer)) {
             System.out.println("Correct!");
@@ -55,8 +55,8 @@ public class Engine {
     }
 
     public static int chooseGame() {
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        int choice = SCANNER.nextInt();
+        SCANNER.nextLine();
         System.out.println("Your choice: " + choice + "\n");
         return choice;
     }
