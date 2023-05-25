@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 
 import java.util.Scanner;
@@ -22,6 +23,7 @@ public class Engine {
         for (int i = 0; i < NUMBER_OF_TURNS; i++) {
             switch (gameNumber) {
                 case 2 -> handleRound(Even.generateQuestion(), Even.generateAnswer());
+                case 3 -> handleRound(Calc.generateQuestion(), Calc.generateAnswer());
             }
         }
         sayGoodbye();
@@ -53,6 +55,7 @@ public class Engine {
     private static void printMessage(int gameNumber) {
         switch (gameNumber) {
             case 2 -> System.out.println(Even.MESSAGE);
+            case 3 -> System.out.println(Calc.MESSAGE);
         }
     }
 }
