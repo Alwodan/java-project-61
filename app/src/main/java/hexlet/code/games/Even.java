@@ -15,7 +15,7 @@ public class Even {
         for (int i = 0; i < Engine.NUMBER_OF_TURNS; i++) {
             String currentQuestion = generateQuestion();
             if (!Engine.handleRound(currentQuestion, generateAnswer(currentQuestion))) {
-                 return;
+                return;
             }
         }
         Engine.sayGoodbye();

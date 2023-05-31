@@ -47,13 +47,17 @@ public class Progression {
     }
 
     private static int getMissingNumber(String numbers) {
+        final int fourthElement = 3;
+        final int thirdElement = 2;
+        final int secondElement = 1;
+        final int firstElement = 0;
         String[] elements = numbers.split(" ");
         int diff;
 
-        if (elements[1].equals("..")) {
-            diff = Integer.parseInt(elements[3]) - Integer.parseInt(elements[2]);
+        if (elements[secondElement].equals("..")) {
+            diff = Integer.parseInt(elements[fourthElement]) - Integer.parseInt(elements[thirdElement]);
         } else {
-            diff = Integer.parseInt(elements[1]) - Integer.parseInt(elements[0]);
+            diff = Integer.parseInt(elements[secondElement]) - Integer.parseInt(elements[firstElement]);
         }
 
         for (int i = 0; i < elements.length; i++) {
