@@ -15,18 +15,21 @@ public class Engine {
         return userName;
     }
 
-    public static boolean handleRound(String question, String correctAnswer) {
-        System.out.println("Question: " + question);
-        String userAnswer  = SCANNER.nextLine();
-        System.out.println("Your answer: " + userAnswer);
-        if (userAnswer.equals(correctAnswer)) {
-            System.out.println("Correct!");
-            return true;
-        } else {
-            System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'");
-            System.out.println("Let's try again, " + userName + "!");
-            return false;
+    public static boolean handleGame(String[][] questionAndAnswer) {
+        for (int i = 0; i < NUMBER_OF_TURNS; i++) {
+            System.out.println("Question: " + questionAndAnswer[i][0]);
+            String userAnswer  = SCANNER.nextLine();
+            System.out.println("Your answer: " + userAnswer);
+            if (userAnswer.equals(questionAndAnswer[i][1])) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '"
+                        + questionAndAnswer[i][1] + "'");
+                System.out.println("Let's try again, " + userName + "!");
+                return false;
+            }
         }
+        return true;
     }
 
     public static int chooseGame() {

@@ -12,13 +12,14 @@ public class GCD {
     public static void startGame() {
         Cli.greeting();
         System.out.println(MESSAGE);
+        String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_TURNS][2];
         for (int i = 0; i < Engine.NUMBER_OF_TURNS; i++) {
-            String currentQuestion = generateQuestion();
-            if (!Engine.handleRound(currentQuestion, generateAnswer(currentQuestion))) {
-                return;
-            }
+            questionsAndAnswers[i][0] = generateQuestion();
+            questionsAndAnswers[i][1] = generateAnswer(questionsAndAnswers[i][0]);
         }
-        Engine.sayGoodbye();
+        if (Engine.handleGame(questionsAndAnswers)) {
+            Engine.sayGoodbye();
+        }
     }
 
     public static String generateQuestion() {

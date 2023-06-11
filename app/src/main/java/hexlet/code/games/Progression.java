@@ -10,61 +10,48 @@ public class Progression {
     private static final int PROGRESSION_LENGTH = 10;
     private static final int FIRST_NUMBER_MAX = 50;
     private static final int DIFFERENCE_MAX = 20;
+    private static int indexToHide;
 
     public static void startGame() {
+        Random random = new Random();
         Cli.greeting();
         System.out.println(MESSAGE);
+        String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_TURNS][2];
         for (int i = 0; i < Engine.NUMBER_OF_TURNS; i++) {
-            String currentQuestion = generateQuestion();
-            if (!Engine.handleRound(currentQuestion, generateAnswer(currentQuestion))) {
-                return;
-            }
+            //I think this solution is pretty garbage
+            String[] progression = generateProgression();
+            indexToHide = random.nextInt(PROGRESSION_LENGTH);
+            //Be careful - answer is generated first in this game
+            questionsAndAnswers[i][1] = generateAnswer(progression);
+            questionsAndAnswers[i][0] = generateQuestion(progression);
         }
-        Engine.sayGoodbye();
+        if (Engine.handleGame(questionsAndAnswers)) {
+            Engine.sayGoodbye();
+        }
     }
 
-    public static String generateQuestion() {
+    private static String[] generateProgression() {
         Random random = new Random();
-        int firstNumber = random.nextInt(FIRST_NUMBER_MAX);
-        //it can't hide the first number
-        int numberToHide = random.nextInt(PROGRESSION_LENGTH - 1) + 1;
-        int difference = random.nextInt(DIFFERENCE_MAX);
-        int currentNumber = firstNumber;
-        StringBuilder result = new StringBuilder(String.valueOf(firstNumber));
+        int difference = random.nextInt(DIFFERENCE_MAX - 1) + 1;
+        int currentNumber = random.nextInt(FIRST_NUMBER_MAX);
+
+        String[] numbers = new String[PROGRESSION_LENGTH];
+        numbers[0] = String.valueOf(currentNumber);
+
         for (int i = 1; i < PROGRESSION_LENGTH; i++) {
             currentNumber += difference;
-            if (i == numberToHide) {
-                result.append(" ..");
-            } else {
-                result.append(" ").append(currentNumber);
-            }
+            numbers[i] = String.valueOf(currentNumber);
         }
-        return result.toString();
+
+        return numbers;
     }
 
-    public static String generateAnswer(String question) {
-        return String.valueOf(getMissingNumber(question));
+    public static String generateAnswer(String[] numbers) {
+        return numbers[indexToHide];
     }
 
-    private static int getMissingNumber(String numbers) {
-        final int fourthElement = 3;
-        final int thirdElement = 2;
-        final int secondElement = 1;
-        final int firstElement = 0;
-        String[] elements = numbers.split(" ");
-        int diff;
-
-        if (elements[secondElement].equals("..")) {
-            diff = Integer.parseInt(elements[fourthElement]) - Integer.parseInt(elements[thirdElement]);
-        } else {
-            diff = Integer.parseInt(elements[secondElement]) - Integer.parseInt(elements[firstElement]);
-        }
-
-        for (int i = 0; i < elements.length; i++) {
-            if (elements[i].equals("..")) {
-                return Integer.parseInt(elements[i - 1]) + diff;
-            }
-        }
-        return 0;
+    private static String generateQuestion(String[] numbers) {
+        numbers[indexToHide] = "..";
+        return String.join(" ", numbers);
     }
 }
