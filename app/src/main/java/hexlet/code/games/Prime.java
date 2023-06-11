@@ -33,7 +33,7 @@ public class Prime {
     private static boolean isPrime(int number) {
         //0 is non-prime
         if (number == 0) {
-            return true;
+            return false;
         }
         // +1 so number 4 can pass
         for (int i = 2; i < (number / 2) + 1; i++) {
