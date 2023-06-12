@@ -31,8 +31,8 @@ public class Prime {
     }
 
     private static boolean isPrime(int number) {
-        //0 is non-prime
-        if (number == 0) {
+        //0 and 1 are non-prime
+        if (number == 0 || number == 1) {
             return false;
         }
         // +1 so number 4 can pass
