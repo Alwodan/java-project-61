@@ -4,42 +4,28 @@ import java.util.Scanner;
 
 public class Engine {
     public static final int NUMBER_OF_TURNS = 3;
-    private static String userName;
-    private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void setUserName() {
-        userName = SCANNER.nextLine();
-    }
-
-    public static String getUserName() {
-        return userName;
-    }
-
-    public static boolean handleGame(String[][] questionAndAnswer) {
+    public static void handleGame(String[][] questionAndAnswer, String message) {
+        Scanner scanner = new Scanner(System.in);
+        Cli.greeting();
+        System.out.println(message);
         for (int i = 0; i < NUMBER_OF_TURNS; i++) {
             System.out.println("Question: " + questionAndAnswer[i][0]);
-            String userAnswer  = SCANNER.nextLine();
+            String userAnswer  = scanner.nextLine();
             System.out.println("Your answer: " + userAnswer);
             if (userAnswer.equals(questionAndAnswer[i][1])) {
                 System.out.println("Correct!");
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '"
                         + questionAndAnswer[i][1] + "'");
-                System.out.println("Let's try again, " + userName + "!");
-                return false;
+                System.out.println("Let's try again, " + Cli.username + "!");
+                return;
             }
         }
-        return true;
-    }
-
-    public static int chooseGame() {
-        int choice = SCANNER.nextInt();
-        SCANNER.nextLine();
-        System.out.println("Your choice: " + choice + "\n");
-        return choice;
+        sayGoodbye();
     }
 
     public static void sayGoodbye() {
-        System.out.println("Congratulations, " + userName + "!");
+        System.out.println("Congratulations, " + Cli.username + "!");
     }
 }

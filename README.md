@@ -1,6 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Alwodan/java-project-61/workflows/hexlet-check/badge.svg)](https://github.com/Alwodan/java-project-61/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6cbcc4e746ef229137f9/maintainability)](https://codeclimate.com/github/Alwodan/java-project-61/maintainability)
+# Some screenshots of games
 ![greet](https://i.imgur.com/lZJqsBZ.png)
 ![even win](https://i.imgur.com/iyVtTl6.png)
 ![even lose](https://i.imgur.com/SP1OP61.png)

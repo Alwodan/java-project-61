@@ -1,9 +1,7 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Progression {
     public static final String MESSAGE = "What number is missing in the progression?";
@@ -13,27 +11,21 @@ public class Progression {
     private static int indexToHide;
 
     public static void startGame() {
-        Random random = new Random();
-        Cli.greeting();
-        System.out.println(MESSAGE);
         String[][] questionsAndAnswers = new String[Engine.NUMBER_OF_TURNS][2];
         for (int i = 0; i < Engine.NUMBER_OF_TURNS; i++) {
             //I think this solution is pretty garbage
             String[] progression = generateProgression();
-            indexToHide = random.nextInt(PROGRESSION_LENGTH);
+            indexToHide = Utils.getRandomInt(0, PROGRESSION_LENGTH);
             //Be careful - answer is generated first in this game
             questionsAndAnswers[i][1] = generateAnswer(progression);
             questionsAndAnswers[i][0] = generateQuestion(progression);
         }
-        if (Engine.handleGame(questionsAndAnswers)) {
-            Engine.sayGoodbye();
-        }
+        Engine.handleGame(questionsAndAnswers, MESSAGE);
     }
 
     private static String[] generateProgression() {
-        Random random = new Random();
-        int difference = random.nextInt(DIFFERENCE_MAX - 1) + 1;
-        int currentNumber = random.nextInt(FIRST_NUMBER_MAX);
+        int difference = Utils.getRandomInt(0, DIFFERENCE_MAX - 1) + 1;
+        int currentNumber = Utils.getRandomInt(0, FIRST_NUMBER_MAX);
 
         String[] numbers = new String[PROGRESSION_LENGTH];
         numbers[0] = String.valueOf(currentNumber);
