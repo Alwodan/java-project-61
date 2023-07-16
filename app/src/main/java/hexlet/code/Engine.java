@@ -18,7 +18,7 @@ public class Engine {
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '"
                         + questionAndAnswer[i][1] + "'");
-                System.out.println("Let's try again, " + Cli.username + "!");
+                System.out.println("Let's try again, " + Cli.getUsername() + "!");
                 return;
             }
         }
@@ -26,6 +26,6 @@ public class Engine {
     }
 
     public static void sayGoodbye() {
-        System.out.println("Congratulations, " + Cli.username + "!");
+        System.out.println("Congratulations, " + Cli.getUsername() + "!");
     }
 }

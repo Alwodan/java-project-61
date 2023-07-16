@@ -3,7 +3,7 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Cli {
-    static String username;
+    private static String username;
 
     public static void greeting() {
         Scanner scanner = new Scanner(System.in);
@@ -11,5 +11,9 @@ public class Cli {
         System.out.println("May I have your name?");
         username = scanner.nextLine();
         System.out.println("Hello, " + username + "!");
+    }
+
+    static String getUsername() {
+        return username;
     }
 }
